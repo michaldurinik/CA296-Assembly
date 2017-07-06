@@ -1,6 +1,7 @@
 ;CA296Exercise-4.3 - Write a program that will allow a user to input an
 ;initial pattern. Your program should then display the pattern and move it
-;up one line every every 500ms until all the LEDs are off.
+;up one line every every 500ms until all the LEDs are off.
+
 .586
 .model flat,stdcall
 .stack 4096
@@ -18,37 +19,41 @@ includelib user32.lib
 includelib msvcrt.lib
 
 .data
-clear			DWORD	0
-count			DWORD	0
-last			DWORD	0
-curr			DWORD	1
-no_rows			DWORD	32
+count			DWORD	32
+r_count			DWORD	0
+row0			DWORD	0
+row1			DWORD	1
+msg				BYTE	"Please input pattern", 0, 10
 
 .code
 	main:nop
-		invoke readInteger
+
+		invoke readIntegerWithMessage, addr msg
 		invoke setPattern, eax
 		
+l1:		mov row0, 0
+		mov row1, 1
+		mov r_count, 0
 
-l1:		mov curr, 1
-		mov last, 0
-		dec no_rows
-		cmp count, 32
-		je finish
+		cmp count, 0
+		jl finish
 
+		mov eax, count
+l2:		cmp r_count, eax
+		je l3
 
-		
-		invoke writeRow, 0, clear
-l2:		mov eax, no_rows
-		cmp curr, eax
-		je l1
-		invoke readRow, curr
-		invoke writeRow, curr, eax
-		inc count
-		inc last
-		inc curr
-		invoke Sleep, 500
+		invoke readRow, row1
+		invoke writeRow, row0, eax
+		inc row0
+		inc row1
+		inc r_count
+		mov eax, count
 		jmp l2
+
+l3:		dec count
+		invoke Sleep, 500
+		jmp l1
+
 finish:
 		invoke ExitProcess,0
 
