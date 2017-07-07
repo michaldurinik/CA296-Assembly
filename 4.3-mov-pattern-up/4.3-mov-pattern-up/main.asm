@@ -2,6 +2,8 @@
 ;initial pattern. Your program should then display the pattern and move it
 ;up one line every every 500ms until all the LEDs are off.
 
+;in 4.5 solution there is simplified version of this, less variables used, less lines.
+
 .586
 .model flat,stdcall
 .stack 4096
@@ -53,7 +55,7 @@ l2:		cmp r_count, eax				;if r_count == eax, (comparing total count with rowcoun
 l3:		dec count						;count -= 1, (after moving entire LED field by 1, decrease main counter)
 		invoke Sleep, 500				;sleep for 500ms for people to observe change
 		jmp l1							;jump to l1, to start another cycle, (l1 is outside or main, loop)
-
+										
 finish:
 		invoke ExitProcess,0
 
