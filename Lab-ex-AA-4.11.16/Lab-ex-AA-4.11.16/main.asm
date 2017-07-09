@@ -26,7 +26,7 @@ count			DWORD	31
 
 		invoke readIntegerWithMessage, addr in_msg
 		mov ebx, eax
-		invoke setPattern, 1
+		invoke setPattern, 7
 
 l1:		invoke readRow, ebx				;row number in ebx
 		cmp count, 0
