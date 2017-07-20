@@ -35,11 +35,14 @@ l1:		cmp row, 32
 		je finish
 
 		invoke readRow, row
-		mov ebx, eax			;copy eax to ebx
-		shl eax, 16				;shift half of eax left
-		shr ebx, 16				;shift half of ebx righ
-		or eax, ebx				;1's from both registers are kept in resulting eax
 
+		;mov ebx, eax				;copy eax to ebx
+		;shl eax, 16				;shift half of eax left
+		;shr ebx, 16				;shift half of ebx righ
+		;or eax, ebx				;1's from both registers are kept in resulting eax
+		
+		rol eax, 16					;simpler solution, rolls bites to other side
+									;it's shift but moving carry flag bits to other side
 		invoke writeRow, row, eax
 		inc row
 		jmp l1
