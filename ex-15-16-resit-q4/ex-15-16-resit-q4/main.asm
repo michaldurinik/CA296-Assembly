@@ -22,7 +22,8 @@ includelib msvcrt.lib
 
 
 .data
-row				DWORD	1
+row_num				DWORD	1
+row_leds			DWORD	0
 
 .code
 	main:nop
@@ -30,21 +31,21 @@ row				DWORD	1
 		invoke readInteger
 		invoke setPattern, eax
 		invoke readRow, 0
-		mov ebx, eax					;universal row will be in ebx
+		mov row_leds, eax					;universal row will be in row_leds
 
-l1:		cmp row, 32
+l1:		cmp row_num, 32
 		je l2
 
-		invoke readRow, row
-		and ebx, eax					;we and each row, so only 1's in same spot survive
-		inc row
+		invoke readRow, row_num
+		and row_leds, eax					;we "and" each row, so only 1's in same spot survive
+		inc row_num
 		jmp l1
 
-l2:		dec row							;we dec row first as it's 32
-		cmp row, 0
+l2:		dec row_num							;we dec row first as it's 32 down to 0
+		cmp row_num, 0
 		jl finish
 
-		invoke writeRow, row, ebx		;write ebx to every row
+		invoke writeRow, row_num, row_leds	;write row_leds to every row
 		jmp l2
 
 finish:

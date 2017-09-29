@@ -39,6 +39,7 @@ l1:		cmp ecx, finish
 		jg ending
 
 		invoke readRow, rowp		;row in eax
+		mov ecx, start
 		mov ebx, 1
 		shl ebx, CL					;shift by CL=start
 		not ebx						;flip binary, so all 1's and only one 0

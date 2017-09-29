@@ -20,15 +20,16 @@ includelib msvcrt.lib
 .data
 in_msg			BYTE	"Please input row to clear", 0, 10
 count			DWORD	31
+row_num			DWORD	0
 
 .code
 	main:nop
 
 		invoke readIntegerWithMessage, addr in_msg
-		mov ebx, eax
+		mov row_num, eax
 		invoke setPattern, 1
 
-l1:		invoke readRow, ebx				;row number in ebx
+l1:		invoke readRow, row_num			;row number in row_num
 		cmp count, 0
 		jl finish
 
@@ -38,7 +39,7 @@ l1:		invoke readRow, ebx				;row number in ebx
 		not edx							;flip binary, 0111111111.....
 		and eax, edx					;where is 0and0 = 0, 0and1 = 0 also
 
-		invoke writeRow, ebx, eax		;store modified row back.
+		invoke writeRow, row_num, eax	;store modified row back.
 		invoke Sleep, 200
 		dec count
 		jmp l1
