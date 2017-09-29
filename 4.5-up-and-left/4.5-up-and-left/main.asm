@@ -1,6 +1,7 @@
 ;CA296Exercise-4.5 - Write a program that will allow a user to input an
 ;initial pattern. Your program should then display the pattern and move it
-;up & left one line every every 500ms until all the LEDs are off.
+;up & left one line every every 500ms until all the LEDs are off.
+
 .586
 .model flat,stdcall
 .stack 4096
@@ -20,6 +21,7 @@ includelib msvcrt.lib
 .data
 count			DWORD	32
 row_no			DWORD	1
+prev_row		DWORD	0
 in_msg			BYTE	"Please input pattern", 0, 10
 
 .code
@@ -37,9 +39,10 @@ inner:		cmp ecx, row_no
 
 			mov ebx, row_no			;row here we copy led info is in: ebx = row_no -1
 			dec ebx
+			mov prev_row, ebx		;prev_row = row_no -1
 			invoke readRow, row_no
-			sal eax, 1				;shift leds to left
-			invoke writeRow, ebx, eax
+			sal eax, 1				;shift leds to left by 1
+			invoke writeRow, prev_row, eax
 			inc row_no
 			jmp inner
 

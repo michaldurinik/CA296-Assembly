@@ -2,7 +2,8 @@
 ; output n
 ; th element of the Fibonacci sequence. Given n = 4, your program
 ; should output:
-; fib(4) = 5
+; fib(4) = 5
+
 .586
 .model flat,stdcall
 .stack 4096

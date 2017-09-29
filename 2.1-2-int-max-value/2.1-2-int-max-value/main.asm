@@ -1,5 +1,6 @@
-; CA296Exercise-2.1 — Write a program that will input 2 integers and output
-; their maximum value.
+; CA296Exercise-2.1 - Write a program that will input 2 integers and output
+; their maximum value.
+
 .586
 .model flat,stdcall
 .stack 4096

@@ -40,7 +40,7 @@ message		BYTE	"%d + %d = %d", 10, 0
 		invoke readInteger
 		add y, eax
 		add sum, eax
-		invoke crt_printf, addr message, x,y,sum
+		invoke crt_printf, addr message, x, y, sum
 
 		invoke ExitProcess,0
 

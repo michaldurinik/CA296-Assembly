@@ -1,6 +1,7 @@
 ; CA296Exercise-3.2 - Using your solution to 3.1, write a program to read in
 ; a sequence of non-negative integers and output the corresponding Fibonacci
-; number. The sequence should be terminated by a negative value.
+; number. The sequence should be terminated by a negative value.
+
 .586
 .model flat,stdcall
 .stack 4096

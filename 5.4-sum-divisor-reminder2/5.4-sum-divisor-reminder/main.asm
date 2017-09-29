@@ -1,7 +1,7 @@
 ;CA296Exercise-5.4 - Write a program that will read in two signed, 32-bit
-;integers n and r (where n >= 2 and r > 0) and compute two values:
+;integers n and r (where n  2 and r > 0) and compute two values:
 ;(a) A sum of quotients given by x=2(start), x/r, until x= n
-;(b) A sum of remainders given by x=2(start), x%r, until x= n
+;(b) A sum of remainders given by
 
 .586
 .model flat,stdcall

@@ -24,7 +24,7 @@ y			DWORD	0
 .code
 	main:nop
 
-l1:		invoke random, 32			;generate random int 0-31 and stor ein eax
+l1:		invoke random, 32			;generate random int 0-31 and store in eax
 		mov x, eax					;x coordinate in x
 		invoke random, 32
 		mov y, eax					;y coordinate in y
@@ -32,8 +32,8 @@ l1:		invoke random, 32			;generate random int 0-31 and stor ein eax
 
 	    mov ecx, x					;x coord to ecx 
 		mov ebx, 1					;1 to ebx
-		shl ebx, CL					;CL is 8 bit register of ECX, actuald ecimal value
-									;we shift 1 from ebx CL times(x) to get actual led position 
+		shl ebx, CL					;CL is 8 bit register of ECX, actual decimal value
+									;we shift left from ebx CL-times or(x-times) to get actual led position 
 		or eax, ebx					;logical or with 1, 0or1=1, 1or1=1
 
 		invoke writeRow, y, eax		;write back updated row

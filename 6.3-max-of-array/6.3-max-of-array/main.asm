@@ -22,7 +22,7 @@ includelib msvcrt.lib
 array			DWORD	10 dup(0)
 i				DWORD	1
 max				DWORD	0
-msg				BYTE	"Maximum vale = %d", 10, 0
+msg				BYTE	"Maximum value = %d", 10, 0
 
 .code
 	main:nop

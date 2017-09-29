@@ -1,7 +1,8 @@
 ;CA296Exercise-4.2 - Write a program that will allow a user to input an
 ;initial pattern and the the coordinates of an LED. Your program should then
 ;blink the selected LED, i.e., it should switch the LED on & off with delays of
-;500ms.
+;500ms.
+
 .586
 .model flat,stdcall
 .stack 4096

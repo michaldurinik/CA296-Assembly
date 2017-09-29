@@ -1,6 +1,10 @@
 # CA296-Assembly
 masm32 assembly excercises
 
+If you CA student and stumbled upon these, don't blindly copy solutions.
+You will fail to learn and fail module as result.
+You learn by doing! Only check solutions if really stuck! 
+
 Installation:
 All files(lib v.9) are in __install.zip
 
